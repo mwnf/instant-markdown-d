@@ -8,6 +8,7 @@
   <link rel="stylesheet" type="text/css" href="/css/github-syntax-highlight.css">
   <link rel="stylesheet" type="text/css" href="/css/github-markdown.css">
   <link rel="stylesheet" type="text/css" href="/css/mjpage-html.css">
+  <link rel="stylesheet" type="text/css" href="/css/chart.css">
   <style>
     .markdown-body {
       min-width: 200px;
@@ -24,6 +25,7 @@
     }
   </style>
   <script src="/socket.io/socket.io.js"></script>
+  <script src="/mermaid.js"></script>
   <script>
     var socket = io.connect('http://'+ window.location.host +'/');
     socket.on('connect', function () {
@@ -36,6 +38,7 @@
         if(marker) {
           marker.scrollIntoView();
         }
+        mermaid.init({noteMargin: 5}, ".language-mermaid");
       });
       socket.on('die', function(newHTML) {
         window.open('', '_self', '');
